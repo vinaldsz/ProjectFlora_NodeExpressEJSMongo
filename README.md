@@ -20,8 +20,11 @@ Includes logical model of the DB. Model represents various collections - embeddi
 
 * Import the file using mongoimport. If you already have port 27017 used, use 37017
 ```mongoimport -h localhost:27017 -d mongoFlora -c base_market_incentive --file base_market_incentive.json --jsonArray```
+
 ```mongoimport -h localhost:27017 -d mongoFlora -c expense --file expense_data.json --jsonArray```
+
 ```mongoimport -h localhost:27017 -d mongoFlora -c farmer --file farmer_data.json --jsonArray```
+
 ```mongoimport -h localhost:27017 -d mongoFlora -c product --file product.json --jsonArray```
 
 All the collections should be successfully imported.
