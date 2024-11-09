@@ -10,6 +10,11 @@ Includes business requirement in a pdf format
 Includes logical model of the DB. Model represents various collections - embeddings, references
     Logical_Design.jpg
 
+# JSON Collection examples
+Includes examples of various collections in the model with relavant comments about the decision made
+    Json_Collection_Examples.jpg
+
+
 # How to load data
 
 * Download the below mentioned files
@@ -50,7 +55,7 @@ Run the Query3.js on vscode
 Run the Query4.js on vscode
 ```node Query4.js```
 
-* Query5: Nested Field Query: Find the details were specific farmer is associated and has price_per_bundle between 50 and 60
+* Query5: Nested Field Query: Find all the dates that white Jasmine was between 50-60 USD
 
 Run Query5.js on vscode using
 ```nnode Query5.js```
