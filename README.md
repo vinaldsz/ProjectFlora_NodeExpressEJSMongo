@@ -32,6 +32,8 @@ Includes examples of various collections in the model with relavant comments abo
 
 ```mongoimport -h localhost:27017 -d mongoFlora -c product --file product.json --jsonArray```
 
+```mongoimport -h localhost:27017 -d mongoFlora -c orders --file orders.json --jsonArray```
+
 All the collections should be successfully imported.
 
 # Queries
@@ -58,4 +60,4 @@ Run the Query4.js on vscode
 * Query5: Nested Field Query: Find all the dates that white Jasmine was between 50-60 USD
 
 Run Query5.js on vscode using
-```nnode Query5.js```
+```node Query5.js```
