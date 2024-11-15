@@ -320,7 +320,7 @@ export async function updateExpensesById(expense_id, amount, date) {
 }
 //Mongo update Inventory
 export async function updateInventoryById(harvest_id, quantity_in_bundles, product_name, date) {
-  console.log("updateExpenseById", harvest_id, quantity_in_bundles, product_name, date);
+  console.log("updateInventoryById", harvest_id, quantity_in_bundles, product_name, date);
 
   const client = new MongoClient(uri);
 
@@ -330,8 +330,7 @@ export async function updateInventoryById(harvest_id, quantity_in_bundles, produ
     const results = await productCollection.updateOne(
       {
         "harvest.harvest_id": new ObjectId(harvest_id),
-        product_name: product_name,
-        "harvest.date": date
+        product_name: product_name
       },
       {
         $set: {

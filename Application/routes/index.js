@@ -185,32 +185,9 @@ router.post("/seller/:farmer_id/addExpense", async (req, res, next) => {
   }
 });
 
-router.post("/seller/:farmer_id/addInventory", async (req, res, next) => {
-  const query = req.query.q || "";
-  const page = +req.query.page || 1;
-  const pageSize = +req.query.pageSize || 24;
-  const msg = req.query.msg || null;
-  const quantity_in_bundles = req.body.quantity_in_bundles;
-  const product_name = req.body.product_name;
-  const created_at = req.body.created_at;
-  const farmer_id = req.params.farmer_id;
-  try {
-    let updateResult = await myDb.addInventory(farmer_id,quantity_in_bundles, product_name, created_at);
-    console.log("addInventory", updateResult);
-  
-      if (updateResult && updateResult.changes === 1) {
-        res.redirect(`/seller/sellerOptions?farmer_id=${farmer_id}`);
-      } else {
-        res.redirect(`/seller/${farmer_id}/addInventory?msg=Error adding inventory`);
-      }
-    } catch (err) {
-    next(err);
-  }
-});
-
 router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
   const expense_id = req.params.expense_id;
-  console.log("👉 expense_id", expense_id);
+  //console.log("👉 expense_id", expense_id);
   const query = req.query.q || "";
   const page = +req.query.page || 1;
   const pageSize = +req.query.pageSize || 24;
@@ -218,7 +195,7 @@ router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
   try {
     console.log("Expense_id in get editExpense", expense_id);
     let Expense = await myDb.getExpensesByExpenseId(expense_id);
-    console.log("🟢 Expense from get", Expense);
+    //console.log("🟢 Expense from get", Expense);
     res.render("./pages/editExpense", { 
       Expense, 
       query, 
@@ -232,7 +209,6 @@ router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
 });
 
 router.post("/seller/:expense_id/editExpense", async (req, res, next) => {
-  console.log("👻 Body", req.body)
   const { expense_id, amount, date } = req.body;
   try {
 
@@ -325,12 +301,11 @@ router.get("/seller/:farmer_id/editInventory", async (req, res, next) => {
 });
 
 router.post("/seller/:farmer_id/editInventory", async (req, res, next) => {
-  console.log("👻 Body", req.body);
   const farmer_id = req.params.farmer_id;
-  const { harvest_id, quantity_in_bundles, product_name, date } = req.body;
+  const { quantity_in_bundles, product_name, date,harvest_id } = req.body;
   //const { product_name, inventory_id, harvest_date, quantity_in_bundles, first_name, last_name, farmer_id, harvest_id } = req.body;
   try {
-    console.log("farmer_id in update", harvest_id, quantity_in_bundles, date);
+    console.log("farmer_id in update", harvest_id,quantity_in_bundles, date);
     const UpdateInventory = await myDb.updateInventoryById(harvest_id, quantity_in_bundles, product_name, date);
     console.log("Update", UpdateInventory);
     console.log(farmer_id);
